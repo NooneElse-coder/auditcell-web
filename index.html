@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuditCell - 审计工具盒子 | Excel转Word报告专家</title>
+    <meta name="description" content="AuditCell是一款专为审计人员设计的Excel插件，支持一键生成Word报告，智能格式排版。正式版仅需99元/年。">
+    <meta name="keywords" content="AuditCell, 审计工具, Excel转Word, VSTO插件, 审计报告生成">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 第一版的 Excel 绿配色 */
+        .excel-bg { background-color: #217346; }
+        .excel-text { color: #217346; }
+        .excel-btn:hover { background-color: #1a5c38; }
+        .excel-border { border-color: #217346; }
+        
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <nav class="bg-white shadow-sm fixed w-full z-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold excel-text flex items-center">
+                        <svg id="site-logo" class="w-7 h-7 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        AuditCell
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="hover:text-green-700 font-medium">功能</a>
+                    <a href="#tutorial" class="hover:text-green-700 font-medium">教程</a>
+                    <a href="#pricing" class="hover:text-green-700 font-medium">价格</a>
+                </div>
+                <div>
+                    <a href="#download" class="excel-bg text-white px-5 py-2 rounded-full font-medium transition excel-btn shadow-md">下载试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-32 pb-20 bg-gradient-to-b from-green-50 to-white text-center px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+            专为审计师打造的 <br>
+            <span class="excel-text">智能工具盒子</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            连接 Excel 与 Word 的数字桥梁。一键生成审计报告，智能排版，完美兼容 WPS。<br>
+            注册即送 7 天全功能试用。
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="#download" class="excel-bg text-white text-lg px-8 py-4 rounded-lg font-bold shadow-xl transition transform hover:-translate-y-1 excel-btn flex items-center justify-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                立即下载 v1.0
+            </a>
+            <a href="#pricing" class="bg-white text-gray-700 border border-gray-300 text-lg px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition">
+                查看价格
+            </a>
+        </div>
+        <p class="mt-6 text-sm text-gray-400">适配 Win10 / Win11 · 硬件指纹绑定 · 安全稳定</p>
+    </div>
+
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">核心功能亮点</h2>
+                <p class="text-gray-500 mt-4">解决审计工作中的痛点，让数据流转更顺畅</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition bg-gray-50">
+                    <div class="w-12 h-12 excel-bg rounded-lg flex items-center justify-center text-white mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">一键生成报告</h3>
+                    <p class="text-gray-500">选中 Excel 区域，自动识别表格结构并复制到 Word，保留格式，无需反复调整列宽和边框。</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition bg-gray-50">
+                    <div class="w-12 h-12 excel-bg rounded-lg flex items-center justify-center text-white mb-6">
+                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">账号硬件绑定</h3>
+                    <p class="text-gray-500">采用先进的硬件指纹技术，账号与电脑绑定，支持单点登录互斥，保障您的权益安全。</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition bg-gray-50">
+                    <div class="w-12 h-12 excel-bg rounded-lg flex items-center justify-center text-white mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">格式自定义</h3>
+                    <p class="text-gray-500">支持自定义 Word 表格样式（加粗、底纹、行高等等），满足不同项目的报告标准。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">简单透明的定价</h2>
+            
+            <div class="bg-white text-gray-800 rounded-2xl shadow-2xl overflow-hidden max-w-md mx-auto transform hover:scale-105 transition duration-300">
+                <div class="bg-gradient-to-r from-green-600 to-green-500 p-6 text-white">
+                    <h3 class="text-2xl font-bold">AuditCell 正式版</h3>
+                    <p class="opacity-90 mt-2">解锁所有高级功能</p>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-center items-baseline mb-6">
+                        <span class="text-5xl font-extrabold excel-text">¥99</span>
+                        <span class="text-gray-500 ml-2">/ 年</span>
+                    </div>
+                    
+                    <ul class="space-y-4 text-left mb-8 px-4 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            无限次生成审计报告
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            双设备登录权限 (支持换机)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            专属微信技术支持
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            后续所有版本免费升级
+                        </li>
+                    </ul>
+
+                    <div class="border-t border-gray-100 pt-8">
+                        <p class="font-bold text-gray-800 mb-4">购买方式</p>
+                        
+                        <div class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                            <p class="text-sm text-gray-500 mb-2">请添加微信购买正式版</p>
+                            <p class="text-2xl font-bold excel-text select-all" id="wx-id">我的微信号</p>
+                            <p class="text-xs text-gray-400 mt-2">(点击上方微信号可复制)</p>
+                            
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-24 bg-gray-50 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-gray-900">先试用，再购买</h2>
+            <p class="text-gray-600 mb-10 text-lg">新用户下载安装后，注册即送 7 天全功能试用。</p>
+            
+            <a href="YOUR_DOWNLOAD_LINK" class="https://wwans.lanzoub.com/b0187zem6f">
+                下载 AuditCell 安装包
+            </a>
+            
+            <p class="text-sm text-gray-500">
+                支持 Windows 10/11 · 需安装 WPS 或 Office 2016+ <br>
+                当前版本 v1.0 | 更新日期 2025.12
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <span class="text-xl font-bold excel-text">AuditCell</span>
+            <p class="text-gray-500 mt-4 text-sm">© 2025 AuditCell Team. 保留所有权利。</p>
+            <p class="text-gray-400 mt-2 text-xs">如有问题请联系微信: 我的微信号</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('wx-id').addEventListener('click', function() {
+            var text = this.innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('微信号已复制！去微信添加好友吧。');
+            }, function(err) {
+                console.error('复制失败: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
